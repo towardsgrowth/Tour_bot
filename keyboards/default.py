@@ -1,4 +1,5 @@
 from telebot.types import ReplyKeyboardMarkup, KeyboardButton
+from config import TEXTS
 
 
 
@@ -9,10 +10,19 @@ def phone_button(name):
     return markup
 
 
-def make_buttons(names: list):
-    markup = ReplyKeyboardMarkup(resize_keyboard=True)
+def make_buttons(names: list, row_width:int =2):
+    markup = ReplyKeyboardMarkup(resize_keyboard=True, row_width=row_width)
+    buttons = []
     for name in names:
         btn = KeyboardButton(name)
-        markup.add(btn)
+        buttons.append(btn)
+    markup.add(*buttons)
     return markup
+
+
+
+
+
+
+
 
